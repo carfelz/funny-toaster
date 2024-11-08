@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./Toaster.css";
 
-const Toaster = ({ title, icon, duration, onClose }) => {
+const Toaster = ({ title = '', icon = '', duration = 0, type = '', onClose = () => {} }) => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -13,7 +13,7 @@ const Toaster = ({ title, icon, duration, onClose }) => {
   }, [duration, onClose]);
 
   return (
-    <div className='toast' role="alert">
+    <div className={`toast ${type}`} role="alert">
       <div className="toast-message">
         {icon && (
           <i className={`${icon}`}></i>

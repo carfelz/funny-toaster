@@ -8,6 +8,7 @@ const Toasts = () => {
   const [position, setPosition] = useState('top-right');
   const [title, setTitle] = useState('Select a title');
   const [icon, setIcon] = useState('fa fa-check');
+  const [type, setType] = useState('regular');
 
   const addToast = () => {
 
@@ -16,6 +17,7 @@ const Toasts = () => {
       title,
       icon,
       position,
+      type,
       duration: Number(duration) * 1000,
     };
 
@@ -25,9 +27,18 @@ const Toasts = () => {
   const onClose = (id) => setToasts(toasts.filter(toast => toast.id != id))
 
   const onPositionChange = (event) => {
-    setToasts([]);
+    handleToastClear()
     const { value } = event.target;
     setPosition(value);
+  }
+
+  const onTypeChange = (event) => {
+    const { value } = event.target;
+    setType(value);
+  }
+
+  const handleToastClear = () => {
+    setToasts([]);
   }
 
   return (
@@ -68,11 +79,23 @@ const Toasts = () => {
             <option value="top-left">Top-left</option>
             <option value="bottom-right">Bottom-right</option>
             <option value="bottom-left">Bottom-left</option>
-          </select>   
-
+          </select>
         </div>
+
+        <div className="app-row app-row--group">
+          Type:
+          <select value={type} onChange={onTypeChange}>
+            <option value="toast-regular">Regular</option>
+            <option value="toast-success">Success</option>
+            <option value="toast-error">Error</option>
+          </select>
+        </div>
+
         <div className="app-button-container">
           <button className='show-toast-button' onClick={addToast}>Show Toast</button>
+        </div>
+        <div className="app-button-container">
+          <button className='show-toast-button' onClick={handleToastClear}>Clear Toasts</button>
         </div>
       </div>
       <div className="toast-container">

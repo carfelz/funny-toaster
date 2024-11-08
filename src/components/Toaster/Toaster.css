@@ -3,17 +3,33 @@
   --toast-text-color-fallback: hsl(var(--secondary-hue) 10% 25%);
   --toast-opacity: 0.99;
   --toast-content-gap: 1em;
+  --toast-error-color: #f40303;
+  --toast-success-color: #03f468;
 }
 
+
 .toast {
-  background-color: var(--toast-bg-color-fallback);
   box-shadow: hsl(var(--secondary-hue) 10% 10% / 10%) 0px 1px 3px 0px,
-    hsl(var(--secondary-hue) 10% 10% / 5%) 0px 1px 2px 0px;
+  hsl(var(--secondary-hue) 10% 10% / 5%) 0px 1px 2px 0px;
   border-radius: 0.5em;
   position: relative;
   color: var(--toast-text-color-fallback);
   opacity: var(--toast-opacity);
+}
 
+.toast-regular {
+  background-color: var(--toast-bg-color-fallback);
+  
+}
+
+.toast-success {
+  background-color: var(--toast-success-color);
+  color: #fff
+}
+
+.toast-error {
+  background-color: var(--toast-error-color);
+  color: #fff
 }
 
 .toast:hover {

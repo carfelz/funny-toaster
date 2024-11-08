@@ -36,6 +36,7 @@ const ToastList = ({ data, position, removeToast }) => {
             title={toast.title}
             icon={toast.icon}
             duration={toast.duration}
+            type={toast.type}
             onClose={() => removeToast(toast.id)}
           />
         ))}
